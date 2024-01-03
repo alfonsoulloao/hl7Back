@@ -1,14 +1,25 @@
-import { Controller, Get } from '@nestjs/common';
+import {BadRequestException, Body, Controller, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { AppService } from 'src/app.service';
+import { LoginInput } from 'src/models/inputs/login.Input';
+import { LoginServices } from 'src/services/login.service';
 
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly appService: AppService) {}
+ 
+  constructor(private readonly _service: LoginServices) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Post('/login')
+  async findLogin(@Body() loginDto: LoginInput){
+
+   const result = await this._service.loginService(loginDto);
+    
+   if(!result) throw new BadRequestException('Credenciales invalidas');
+  
+   return   JSON.stringify(result);
+
   }
+
+
+  
 }
