@@ -1,14 +1,23 @@
-import { Controller, Get } from '@nestjs/common';
+import { BadRequestException, Controller, Get } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { AppService } from 'src/app.service';
+import { EventoInicioService } from 'src/services/evento-inicio/evento-inicio.service';
+
 
 @ApiTags('inicio')
 @Controller('inicio')
 export class InicioController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly inicioService: EventoInicioService) { }
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+
+  @Get('/paises')
+  async findPaises() {
+
+    const result = await this.inicioService.paisesService();
+
+    if (!result) throw new BadRequestException('Error al cargar paises');
+
+    return JSON.stringify(result);
+
   }
+
 }

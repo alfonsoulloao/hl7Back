@@ -32,12 +32,6 @@ export class LoginServices {
 
     } catch (error) {
       console.log(error);
-
     }
-
-
   }
-
-
-
 }
