@@ -6,7 +6,7 @@ import { AuthController } from './controllers/auth.controller';
 import { LoginServices } from './services/login.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Medico } from './models/entities/medico.entity';
-import { EventoInicioService } from './services/evento-inicio/evento-inicio.service';
+import { EventoInicioService } from './services/evento-inicio.service';
 import { ValueSet } from './models/entities/value-set.entity';
 
 @Module({
