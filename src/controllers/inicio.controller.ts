@@ -24,7 +24,7 @@ export class InicioController {
 
     const result = await this.inicioService.comunasService();
 
-    if (!result) throw new BadRequestException('Error al cargar paises');
+    if (!result) throw new BadRequestException('Error al cargar comunas');
 
     return JSON.stringify(result);
   }
@@ -34,7 +34,27 @@ export class InicioController {
 
     const result = await this.inicioService.sexoAdminService();
 
-    if (!result) throw new BadRequestException('Error al cargar paises');
+    if (!result) throw new BadRequestException('Error al cargar sexo administrativo');
+
+    return JSON.stringify(result);
+  }
+
+  @Get('/diagnosticos')
+  async findDiagnosticos() {
+
+    const result = await this.inicioService.diagnosticoService();
+
+    if (!result) throw new BadRequestException('Error al cargar diagnosticos');
+
+    return JSON.stringify(result);
+  }
+
+  @Get('/centrosasistenciales')
+  async findCentrosAsistenciales() {
+
+    const result = await this.inicioService.centroAsistencialService();
+
+    if (!result) throw new BadRequestException('Error al cargar diagnosticos');
 
     return JSON.stringify(result);
   }
