@@ -39,6 +39,26 @@ export class InicioController {
     return JSON.stringify(result);
   }
 
+  @Get('/razonDerivacion')
+  async findRazonDerivacion() {
+
+    const result = await this.inicioService.razonDerivacionservice();
+
+    if (!result) throw new BadRequestException('Error al cargar razones de derivacion');
+
+    return JSON.stringify(result);
+  }
+
+  @Get('/especialidades')
+  async findEspecialidades() {
+
+    const result = await this.inicioService.especialidadesService();
+
+    if (!result) throw new BadRequestException('Error al cargar especialdiades');
+
+    return JSON.stringify(result);
+  }
+
   @Get('/diagnosticos')
   async findDiagnosticos() {
 
