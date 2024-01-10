@@ -1,25 +1,32 @@
 import { Module } from '@nestjs/common';
+
+// modulos
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { InicioController } from './controllers/inicio.controller';
 import { AuthController } from './controllers/auth.controller';
 import { LoginServices } from './services/login.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { Medico } from './models/entities/medico.entity';
+
+// componentes
 import { Diagnostico } from './models/entities/diagnostico.entity';
 import { EventoInicioService } from './services/evento-inicio.service';
 import { ValueSet } from './models/entities/value-set.entity';
 import { CentroAsistencial } from './models/entities/centro-asistencial.entity';
+import { Medico } from './models/entities/medico.entity';
+import { environment } from './environments/environment';
+
+const env = environment.mySqlDb;
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: 'Password123#@!',
-      database: 'mydb',
+      host: env.host,
+      port: env.port,
+      username: env.user,
+      password: '',
+      database: env.database,
       autoLoadEntities: true,
       synchronize: false
     }),

@@ -10,9 +10,7 @@ export class AuthController {
   constructor(private readonly _service: LoginServices) { }
 
   @Post('/login')
-  async findLogin(@Body() loginDto: LoginInput) {
-
-    console.log("Entrando al controller");
+  async findLogin(@Body() loginDto: LoginInput) {    
 
     const result = await this._service.loginService(loginDto);
 
