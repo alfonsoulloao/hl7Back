@@ -93,6 +93,54 @@ export class EventoInicioService {
         }
     }
 
+    async razonDerivacionservice() {
+        try {
+
+            const valueSetPaises: ValueSetDto[] = [];
+
+            const queryResult = await this.valueSetRepository.findBy({ ID_TIPO_VALUE_SET: 5 });
+
+            queryResult.forEach(element => {
+                var valueSet: ValueSetDto = {
+                    code: element.CODE,
+                    system: element.SYSTEM,
+                    display: element.DISPLAY
+                }
+
+                valueSetPaises.push(valueSet);
+            });
+
+            return valueSetPaises;
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    async especialidadesService() {
+        try {
+
+            const valueSetPaises: ValueSetDto[] = [];
+
+            const queryResult = await this.valueSetRepository.findBy({ ID_TIPO_VALUE_SET: 6 });
+
+            queryResult.forEach(element => {
+                var valueSet: ValueSetDto = {
+                    code: element.CODE,
+                    system: element.SYSTEM,
+                    display: element.DISPLAY
+                }
+
+                valueSetPaises.push(valueSet);
+            });
+
+            return valueSetPaises;
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     async diagnosticoService() {
         try {
 
