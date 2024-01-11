@@ -1,9 +1,4 @@
-export class CentroAsistencialDto {
-
-    //IdCentro: number;
+export class CentroAsistencialDto {    
     CodDeisCentro: string;
     NomCentro: string;
-    //CodRegionCodeVS: string;
-    //NivelAtencion: string;
-    //CodComunaCodeVS: string;
 }

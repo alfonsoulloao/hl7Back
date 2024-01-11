@@ -1,4 +1,4 @@
-import { BadRequestException, Controller, Get } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Get, Post } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { EventoInicioService } from 'src/services/evento-inicio.service';
 
@@ -78,4 +78,20 @@ export class InicioController {
 
     return JSON.stringify(result);
   }
+
+
+  @Post('/crearInicio')
+  async creaBundleInicio(@Body()  bundleInicioInput:any){
+
+    console.log(bundleInicioInput);
+    
+
+    const result = await this.inicioService.creaBundleInicioServices(bundleInicioInput);
+
+    if (!result) throw new BadRequestException('Error al cargar diagnosticos');
+
+    return JSON.stringify(result);
+
+  }
+
 }
