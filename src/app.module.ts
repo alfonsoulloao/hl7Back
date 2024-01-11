@@ -25,7 +25,7 @@ const env = environment.mySqlDb;
       host: env.host,
       port: env.port,
       username: env.user,
-      password: '',
+      password: env.password,
       database: env.database,
       autoLoadEntities: true,
       synchronize: false
